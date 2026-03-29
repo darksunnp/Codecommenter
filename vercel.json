@@ -1,8 +1,14 @@
 {
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.11",
+      "includeFiles": "web/**"
+    }
+  },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api"
+      "destination": "/api/index.py"
     }
   ]
 }
