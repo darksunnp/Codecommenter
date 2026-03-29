@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" role="img" aria-label="Cute cat coder mascot">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#131417"/>
+      <stop offset="100%" stop-color="#08090b"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e2e8ff"/>
+      <stop offset="100%" stop-color="#b5c0df"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6de8ff"/>
+      <stop offset="100%" stop-color="#3db9da"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="10" y="10" width="400" height="400" rx="42" fill="url(#bg)" stroke="#27303a"/>
+
+  <ellipse cx="210" cy="330" rx="125" ry="22" fill="#0f1215"/>
+
+  <path d="M140 170 L175 96 L205 158 Z" fill="url(#coat)"/>
+  <path d="M280 170 L245 96 L215 158 Z" fill="url(#coat)"/>
+  <circle cx="210" cy="196" r="88" fill="url(#coat)"/>
+
+  <ellipse cx="176" cy="193" rx="16" ry="20" fill="#1f2a33"/>
+  <ellipse cx="244" cy="193" rx="16" ry="20" fill="#1f2a33"/>
+  <circle cx="180" cy="188" r="4" fill="#ffffff"/>
+  <circle cx="248" cy="188" r="4" fill="#ffffff"/>
+
+  <path d="M210 204 L198 220 L222 220 Z" fill="#ff93aa"/>
+  <path d="M210 228 Q190 246 172 231" fill="none" stroke="#27303a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M210 228 Q230 246 248 231" fill="none" stroke="#27303a" stroke-width="5" stroke-linecap="round"/>
+
+  <rect x="112" y="248" width="196" height="108" rx="13" fill="#1a2128" stroke="#2d3845"/>
+  <rect x="128" y="263" width="164" height="66" rx="8" fill="url(#screen)"/>
+
+  <rect x="128" y="339" width="164" height="10" rx="5" fill="#2e3742"/>
+  <circle cx="145" cy="344" r="2" fill="#4c5c6d"/>
+  <circle cx="160" cy="344" r="2" fill="#4c5c6d"/>
+  <circle cx="175" cy="344" r="2" fill="#4c5c6d"/>
+
+  <path d="M165 296 h90" stroke="#122027" stroke-width="4" stroke-linecap="round"/>
+  <path d="M165 308 h70" stroke="#122027" stroke-width="4" stroke-linecap="round"/>
+
+  <text x="210" y="286" text-anchor="middle" font-size="14" font-family="monospace" fill="#0f1f27">cat.py</text>
+</svg>

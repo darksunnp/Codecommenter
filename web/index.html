@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitpicker Atlas</title>
+  <meta
+    name="description"
+    content="A bright, modern comment-quality workstation with secure client-side key vaulting."
+  />
+  <link rel="icon" type="image/svg+xml" href="/assets/cat-favicon.svg" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="locked">
+  <div id="vaultGate" class="vault-gate open" aria-modal="true" role="dialog" aria-labelledby="gateTitle">
+    <div class="gate-card">
+      <p class="chip">Step 1 · Local Key Vault</p>
+      <h2 id="gateTitle">Add your Hack Club API key to enter the workspace</h2>
+      <p class="gate-copy">
+        Your key is encrypted in this browser with your passphrase. The server never stores your secret.
+      </p>
+
+      <form id="sealForm" class="stacked-form">
+        <label for="apiKeyInput">Hack Club API key</label>
+        <input id="apiKeyInput" type="password" autocomplete="off" placeholder="Paste your key" required />
+
+        <label for="sealPassInput">Passphrase for local vault</label>
+        <input
+          id="sealPassInput"
+          type="password"
+          autocomplete="new-password"
+          placeholder="At least 8 characters"
+          required
+        />
+
+        <button type="submit" class="lift-btn">Seal Key In Vault</button>
+      </form>
+
+      <form id="unlockForm" class="stacked-form">
+        <label for="unlockPassInput">Unlock existing vault</label>
+        <input
+          id="unlockPassInput"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Passphrase"
+          required
+        />
+        <button type="submit" class="lift-btn secondary">Unlock Vault</button>
+      </form>
+
+      <div class="gate-actions">
+        <button id="forgetVaultBtn" type="button" class="lift-btn tertiary">Forget Local Vault</button>
+        <button id="enterStudioBtn" type="button" class="lift-btn" disabled>Enter Workspace</button>
+      </div>
+
+      <p id="gateStatus" class="status-line" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <div class="site-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <a class="logo" href="#origin">Nitpicker Atlas</a>
+        <p class="logo-sub">Comment Quality Workbench</p>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#origin">Overview</a>
+        <a href="#forge">Analyzer</a>
+        <a href="#result">Results</a>
+      </nav>
+
+      <button id="soundToggleBtn" class="lift-btn tertiary" type="button" aria-pressed="false">SOUND OFF</button>
+    </header>
+
+    <main>
+      <section id="origin" class="panel hero reveal">
+        <div class="hero-copy">
+          <p class="chip">Intelligent Comment Review</p>
+          <h1>
+            Review code comments in a cleaner,
+            <span>faster quality control flow.</span>
+          </h1>
+          <p>
+            Paste a function and its comment, then receive a structured score for accuracy,
+            completeness, and clarity with actionable rewrite guidance.
+          </p>
+
+          <div class="story-strip">
+            <article>
+              <h3>Input</h3>
+              <p>Function + comment + optional context.</p>
+            </article>
+            <article>
+              <h3>Analysis</h3>
+              <p>Judge pass and critique pass with confidence.</p>
+            </article>
+            <article>
+              <h3>Output</h3>
+              <p>Scores, issues, strengths, and rewrite advice.</p>
+            </article>
+          </div>
+
+          <a href="#forge" class="lift-btn hero-cta">Open Analyzer</a>
+        </div>
+
+        <div class="hero-art">
+          <img src="/assets/cat-coder.svg" alt="Nitpicker mascot" />
+          <p class="hero-art-caption">The cat checks comments, not vibes.</p>
+        </div>
+      </section>
+
+      <section id="forge" class="panel reveal">
+        <div class="section-head">
+          <p class="chip">Analysis Input</p>
+          <h2>Comment Analyzer</h2>
+          <p>Use this form to run a single high-quality review.</p>
+        </div>
+
+        <form id="scoreForm" class="editor-grid">
+          <div class="field-row">
+            <label for="languageInput">Language</label>
+            <input id="languageInput" type="text" value="python" />
+          </div>
+
+          <div class="field-row">
+            <label for="modelInput">Model</label>
+            <input id="modelInput" type="text" placeholder="Optional override" />
+          </div>
+
+          <div class="field-row">
+            <label for="baseUrlInput">Base URL</label>
+            <input id="baseUrlInput" type="text" placeholder="Optional override" />
+          </div>
+
+          <div class="field-row full">
+            <label for="functionCodeInput">Function code</label>
+            <textarea
+              id="functionCodeInput"
+              rows="10"
+              placeholder="Paste your function or method"
+              required
+            ></textarea>
+          </div>
+
+          <div class="field-row full">
+            <label for="commentTextInput">Comment or docstring</label>
+            <textarea
+              id="commentTextInput"
+              rows="6"
+              placeholder="Paste the comment you want scored"
+              required
+            ></textarea>
+          </div>
+
+          <div class="field-row full">
+            <label for="contextInput">Optional context</label>
+            <textarea
+              id="contextInput"
+              rows="4"
+              placeholder="Additional behavior, assumptions, or constraints"
+            ></textarea>
+          </div>
+
+          <label class="checkbox-row">
+            <input id="fastModeInput" type="checkbox" />
+            Fast mode (skip critique pass)
+          </label>
+
+          <div class="forge-actions">
+            <button id="runScoreBtn" type="submit" class="lift-btn">Run Analysis</button>
+            <button id="openGateBtn" type="button" class="lift-btn secondary">Manage Key Vault</button>
+          </div>
+
+          <p id="formStatus" class="status-line" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section id="result" class="panel reveal">
+        <div class="section-head">
+          <p class="chip">Output</p>
+          <h2>Review Report</h2>
+          <p>Your scorecard and recommendations appear here after each run.</p>
+        </div>
+
+        <div id="resultCard" class="result-card empty">
+          <p>No report yet. Unlock your vault and run an analysis.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>
