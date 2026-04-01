@@ -51,7 +51,7 @@ if WEB_DIR is not None:
     app.mount("/assets", StaticFiles(directory=WEB_DIR), name="assets")
 
 
-@app.get("/", include_in_schema=False)
+@app.get("/", include_in_schema=False, response_model=None)
 def index() -> FileResponse | HTMLResponse:
     if WEB_DIR is None:
         return HTMLResponse(
@@ -61,11 +61,13 @@ def index() -> FileResponse | HTMLResponse:
     return FileResponse(WEB_DIR / "index.html")
 
 
+@app.get("/health")
 @app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
+@app.post("/score")
 @app.post("/api/score")
 def score_comment(request: ScoreRequest) -> dict:
     api_key = request.api_key.strip()
